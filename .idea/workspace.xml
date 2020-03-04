@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d5e21699-7408-4c41-95c4-4f5060fb43df" name="Default Changelist" comment="" />
+    <list default="true" id="d5e21699-7408-4c41-95c4-4f5060fb43df" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,6 +29,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RunManager">
     <configuration name="main_vector" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -67,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583304265030</updated>
-      <workItem from="1583304266410" duration="6243000" />
+      <workItem from="1583304266410" duration="6777000" />
     </task>
     <servers />
   </component>
@@ -91,6 +94,10 @@
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
     <state width="1877" height="318" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1160@0.0.1920.1160" timestamp="1583311868143" />
+    <state x="461" y="221" key="SettingsEditor" timestamp="1583312560761">
+      <screen x="0" y="0" width="1920" height="1160" />
+    </state>
+    <state x="461" y="221" key="SettingsEditor/1920.0.1920.1040/0.0.1920.1160@0.0.1920.1160" timestamp="1583312560761" />
     <state x="623" y="255" width="672" height="678" key="search.everywhere.popup" timestamp="1583307214073">
       <screen x="0" y="0" width="1920" height="1160" />
     </state>
