@@ -1,4 +1,5 @@
 import math
+from ._global import EPSILON
 
 
 class Vector:
@@ -16,7 +17,10 @@ class Vector:
 
     def normalize(self):
         """返回向量的单位向量"""
-        return 1 / self.norm() * Vector(self._values)
+        if self.norm() < EPSILON:  # 浮点数判断不能用==0
+            raise ZeroDivisionError("Normalize error! norm is zero.")
+
+        return Vector(self._values) / self.norm()
 
     def __add__(self, other):
         assert len(self) == len(other), \
@@ -28,6 +32,13 @@ class Vector:
             "Error in subtracting.Length of vectors must be same."
         return Vector([a - b for a, b in zip(self, other)])
 
+    def dot(self, another):
+        """向量点乘，返回结果标量"""
+        assert len(self) == len(another), \
+            "Error in dot product.Length of vectors must be same."
+
+        return sum(a * b for a, b in zip(self, another))
+
     def __mul__(self, k):
         """返回self*k"""
         return Vector([k * e for e in self])
@@ -35,6 +46,10 @@ class Vector:
     def __rmul__(self, k):
         """返回k*self"""
         return self * k
+
+    def __truediv__(self, k):
+        """返回数量除法的结果向量：self/k"""
+        return (1 / k) * self
 
     def __pos__(self):
         """返回向量取正的结果向量"""

@@ -10,15 +10,22 @@ if __name__ == "__main__":
     print("{}+{}={}".format(vec, vec2, vec + vec2))
     print("{}-{}={}".format(vec, vec2, vec - vec2))
     print("{}*{}={}".format(vec, 3, vec * 3))
-    print("+{}={}".format(vec,+vec))
-    print("-{}={}".format(vec,-vec))
+    print("+{}={}".format(vec, +vec))
+    print("-{}={}".format(vec, -vec))
 
     zero2 = Vector.zero(2)
     print(zero2)
-    print("{}+{}={}".format(vec,zero2,vec+zero2))
+    print("{}+{}={}".format(vec, zero2, vec + zero2))
 
-    print("norm({})={}".format(vec,vec.norm()))
-    print("norm({})={}".format(vec2,vec2.norm()))
+    print("norm({})={}".format(vec, vec.norm()))
+    print("norm({})={}".format(vec2, vec2.norm()))
 
-    print("normalize {} is {}".format(vec2,vec2.normalize()))
+    print("normalize {} is {}".format(vec2, vec2.normalize()))
     print(vec.normalize().norm())
+
+    try:
+        zero2.normalize()
+    except ZeroDivisionError:
+        print("Cannot normalize zero vector {}.".format(zero2))
+
+    print(vec.dot(vec2))
