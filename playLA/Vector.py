@@ -1,3 +1,6 @@
+import math
+
+
 class Vector:
 
     def __init__(self, lst):
@@ -6,6 +9,14 @@ class Vector:
     @classmethod  # 标示这个方法是类方法
     def zero(cls, dim):
         return cls([0] * dim)
+
+    def norm(self):
+        """返回向量的模"""
+        return math.sqrt(sum(e ** 2 for e in self))
+
+    def normalize(self):
+        """返回向量的单位向量"""
+        return 1 / self.norm() * Vector(self._values)
 
     def __add__(self, other):
         assert len(self) == len(other), \

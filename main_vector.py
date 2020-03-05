@@ -16,3 +16,9 @@ if __name__ == "__main__":
     zero2 = Vector.zero(2)
     print(zero2)
     print("{}+{}={}".format(vec,zero2,vec+zero2))
+
+    print("norm({})={}".format(vec,vec.norm()))
+    print("norm({})={}".format(vec2,vec2.norm()))
+
+    print("normalize {} is {}".format(vec2,vec2.normalize()))
+    print(vec.normalize().norm())
