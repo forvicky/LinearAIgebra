@@ -11,6 +11,10 @@ class Matrix:
         """返回一个r行c列的零矩阵"""
         return cls([[0] * c for _ in range(r)])
 
+    def T(self):
+        """返回矩阵的转置矩阵"""
+        return Matrix([[e for e in self.col_vector(i)] for i in range(self.col_num())])
+
     def row_vector(self, index):
         """返回矩阵的第index个行向量"""
         return Vector(self._values[index])
@@ -31,6 +35,18 @@ class Matrix:
 
         return Matrix(
             [[a - b for a, b in zip(self.row_vector(i), another.row_vector(i))] for i in range(self.row_num())])
+
+    def dot(self, another):
+        """返回矩阵乘法的结果"""
+        if isinstance(another, Vector):
+            assert self.col_num() == len(another), \
+                "Error in Matrix-Vector Multiplication"
+            return Vector([self.row_vector(i).dot(another) for i in range(self.row_num())])
+
+        if isinstance(another, Matrix):
+            assert self.col_num() == another.row_num(), \
+                "Error in Matrix-Matrix Multiplication"
+            return Matrix([[self.row_vector(i).dot(another.col_vector(j)) for j in range(another.col_num())] for i in range(self.row_num())])
 
     def __mul__(self, k):
         return Matrix([[e * k for e in self.row_vector(i)] for i in range(self.row_num())])
