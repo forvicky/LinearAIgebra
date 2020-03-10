@@ -24,3 +24,9 @@ if __name__ == "__main__":  # 作为模块被导入时，不希望执行的代�
     print("{}*{}={}".format(matrix2, matrix, matrix2.dot(matrix)))
 
     print("matrix2.T={}".format(matrix2.T()))
+
+    I = Matrix.identity(2)
+    print(I)
+
+    print("matrix2.dot(I)={}".format(matrix2.dot(I)))
+    print("I.dot(matrix2)={}".format(I.dot(matrix2)))

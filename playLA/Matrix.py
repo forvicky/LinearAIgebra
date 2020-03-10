@@ -11,6 +11,15 @@ class Matrix:
         """返回一个r行c列的零矩阵"""
         return cls([[0] * c for _ in range(r)])
 
+    @classmethod
+    def identity(cls, n):
+        """返回一个n行n列的单位矩阵"""
+        m = [[0] * n for _ in range(n)]
+        for i in range(n):
+            m[i][i] = 1
+
+        return cls(m)
+
     def T(self):
         """返回矩阵的转置矩阵"""
         return Matrix([[e for e in self.col_vector(i)] for i in range(self.col_num())])
@@ -46,7 +55,8 @@ class Matrix:
         if isinstance(another, Matrix):
             assert self.col_num() == another.row_num(), \
                 "Error in Matrix-Matrix Multiplication"
-            return Matrix([[self.row_vector(i).dot(another.col_vector(j)) for j in range(another.col_num())] for i in range(self.row_num())])
+            return Matrix([[self.row_vector(i).dot(another.col_vector(j)) for j in range(another.col_num())] for i in
+                           range(self.row_num())])
 
     def __mul__(self, k):
         return Matrix([[e * k for e in self.row_vector(i)] for i in range(self.row_num())])

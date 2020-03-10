@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt   # 画图包
 from playLA.Matrix import Matrix
 from playLA.Vector import Vector
 import math
