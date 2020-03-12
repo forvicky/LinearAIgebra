@@ -32,6 +32,10 @@ class Vector:
             "Error in subtracting.Length of vectors must be same."
         return Vector([a - b for a, b in zip(self, other)])
 
+    def underlying_list(self):
+        """返回向量的底层列表"""
+        return self._values[:]  # [:]表示返回列表的副本
+
     def dot(self, another):
         """向量点乘，返回结果标量"""
         assert len(self) == len(another), \
