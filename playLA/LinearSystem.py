@@ -52,8 +52,14 @@ class LinearSystem:
 
     # 高斯-约旦消元法
     def gauss_jordan_elimination(self):
+        """有解返回True,无解返回False"""
         self._forward()
         self._backward()
+
+        for i in range(len(self.pivots),self._m):
+            if not is_zero(self.Ab[i][-1]):
+                return False
+        return True
 
     def fancy_print(self):
         for i in range(self._m):
