@@ -1,5 +1,5 @@
 import math
-from ._global import EPSILON
+from ._global import is_zero
 
 
 class Vector:
@@ -17,7 +17,7 @@ class Vector:
 
     def normalize(self):
         """返回向量的单位向量"""
-        if self.norm() < EPSILON:  # 浮点数判断不能用==0
+        if is_zero(self.norm()):  # 浮点数判断不能用==0
             raise ZeroDivisionError("Normalize error! norm is zero.")
 
         return Vector(self._values) / self.norm()
