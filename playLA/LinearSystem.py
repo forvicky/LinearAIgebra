@@ -10,7 +10,13 @@ class LinearSystem:
         self._m = A.row_num()
         self._n = A.col_num()
 
-        self.Ab = [Vector(A.row_vector(i).underlying_list() + [b[i]]) for i in range(self._m)]
+        if isinstance(b, Vector):
+            self.Ab = [Vector(A.row_vector(i).underlying_list() + [b[i]]) for i in range(self._m)]
+
+        if isinstance(b, Matrix):
+            self.Ab = [Vector(A.row_vector(i).underlying_list() + b.row_vector(i).underlying_list()) for i in
+                       range(self._m)]
+
         self.pivots = []  # 主元
 
     def _max_row(self, index_i, index_j, n):
@@ -56,7 +62,7 @@ class LinearSystem:
         self._forward()
         self._backward()
 
-        for i in range(len(self.pivots),self._m):
+        for i in range(len(self.pivots), self._m):
             if not is_zero(self.Ab[i][-1]):
                 return False
         return True
@@ -65,3 +71,18 @@ class LinearSystem:
         for i in range(self._m):
             print(" ".join(str(self.Ab[i][j]) for j in range(self._n)), end=" ")
             print("|", self.Ab[i][-1])
+
+
+def inv(A):
+    """求解矩阵的逆"""
+    if A.row_num() != A.col_num():
+        return None
+
+    n = A.row_num()
+
+    ls = LinearSystem(A, Matrix.identity(n))
+    if not ls.gauss_jordan_elimination():
+        return None
+
+    invA = [[row[i] for i in range(n, 2 * n)] for row in ls.Ab]
+    return Matrix(invA)
