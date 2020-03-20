@@ -1,5 +1,5 @@
 import math
-from ._global import is_zero
+from ._global import is_zero, is_equal
 
 
 class Vector:
@@ -62,6 +62,18 @@ class Vector:
     def __neg__(self):
         """返回向量取负的结果向量"""
         return -1 * self
+
+    def __eq__(self, other):
+        """返回向量是否相等"""
+        other_list = other.underlying_list()
+        if len(other_list) != len(self._values):
+            return False
+
+        # all() 函数用于判断给定的可迭代参数 iterable 中的所有元素是否都为 TRUE
+        return all(is_equal(x, y) for x, y in zip(self._values, other_list))
+
+    def __neq__(self, other):
+        return not (self == other)
 
     def __iter__(self):
         """返回向量的迭代器"""

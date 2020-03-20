@@ -1,7 +1,7 @@
 from playLA.Matrix import Matrix
 from playLA.Vector import Vector
 from playLA.LinearSystem import LinearSystem
-from playLA.LinearSystem import inv
+from playLA.LinearSystem import inv, rank
 
 if __name__ == "__main__":
     A = Matrix([[1, 2, 4], [3, 7, 2], [2, 3, 3]])
@@ -47,3 +47,5 @@ if __name__ == "__main__":
     # 计算机浮点运算会有误差
     print(A.dot(invA))
     print(invA.dot(A))
+
+    print(rank(A4))
